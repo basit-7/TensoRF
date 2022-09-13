@@ -45,7 +45,7 @@ def export_mesh(args):
     tensorf = eval(args.model_name)(**kwargs)
     tensorf.load(ckpt)
 
-    alpha,_ = tensorf.getDenseAlpha()
+    alpha,_ = tensorf.getDenseAlpha() //this function gets the occupancy or transperancey for the whole grid
     convert_sdf_samples_to_ply(alpha.cpu(), f'{args.ckpt[:-3]}.ply',bbox=tensorf.aabb.cpu(), level=0.005)
 
 
